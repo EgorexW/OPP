@@ -20,6 +20,7 @@ using UnityEngine.InputSystem;
             var actionMap = playerInput.actions.FindActionMap("Player");
             actionMap.FindAction("Move").performed += OnMove;
             actionMap.FindAction("Look").performed += OnLook;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         
         public void MoveInput(Vector2 newMoveDirection)
@@ -45,6 +46,8 @@ using UnityEngine.InputSystem;
             if (!value.performed){
                 return;
             }
-            LookInput(value.ReadValue<Vector2>());
+            var newLookDirection = value.ReadValue<Vector2>();
+            newLookDirection.y = -newLookDirection.y;
+            LookInput(newLookDirection);
         }
     }

@@ -68,11 +68,7 @@ namespace StarterAssets
         // timeout deltatime
         float _jumpTimeoutDelta;
         GameObject _mainCamera;
-
-
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-        PlayerInput _playerInput;
-#endif
+        
         float _rotationVelocity;
 
         // player
@@ -81,11 +77,7 @@ namespace StarterAssets
 
         bool IsCurrentDeviceMouse{
             get{
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-                return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
-				return false;
-#endif
+				return true; // TODO tmp
             }
         }
 
@@ -267,10 +259,5 @@ namespace StarterAssets
             }
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
-    }
-
-    public struct MoveData
-    {
-        public float speed;
     }
 }
