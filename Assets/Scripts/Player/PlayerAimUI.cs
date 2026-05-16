@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class PlayerAim : MonoBehaviour
+public class PlayerAimUI : MonoBehaviour
 {
     [BoxGroup("References")] [GetComponent] [SerializeField] Image image;
 
@@ -16,6 +16,6 @@ public class PlayerAim : MonoBehaviour
 
     void Update()
     {
-        image.sprite = player.GetInteractive().IsDummy ? notInteractableCursor : interactableCursor;
+        image.sprite = player.HasInteractive ? notInteractableCursor : interactableCursor;
     }
 }
