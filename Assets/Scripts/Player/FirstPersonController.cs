@@ -7,8 +7,6 @@ using UnityEngine.Serialization;
 using UnityEngine.InputSystem;
 #endif
 
-namespace StarterAssets
-{
     [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
@@ -21,6 +19,7 @@ namespace StarterAssets
 
         [Header("Player")] [Tooltip("Rotation speed of the character")] public float RotationSpeed = 1.0f;
 
+        public float movementSpeed = 4;
         [Tooltip("Acceleration and deceleration")] public float SpeedChangeRate = 10.0f;
 
         [Space(10)] [Tooltip("The height the player can jump")] public float JumpHeight = 1.2f;
@@ -28,7 +27,6 @@ namespace StarterAssets
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
         
-        public float movementSpeed = 4;
 
         [Space(10)]
         [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
@@ -258,6 +256,5 @@ namespace StarterAssets
                 lfAngle -= 360f;
             }
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
-        }
     }
-}
+        }
